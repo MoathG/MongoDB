@@ -16,6 +16,10 @@
 1. Insert yourself as a new  student. Example:
 `{"fname" : "Ahmad","lname":"Omar","class":"A","age" :25}`
 
+<!-- db.getCollection('students').insertOne([
+    'fname: 'Moath', 'lname': 'Gharib', 'class': 'B', 'age': 24 '
+]) -->
+
 2.  Insert the following students.
 
 `{"fname" : "Ahmad","lname":"Omar","class":"A","age" :25,"technologies":["PHP","mySql"]}`
@@ -23,19 +27,59 @@
 `{"fname" : "Steve","lname":"Rayan","class":"C","age" :18,"technologies":["C#","mySql"]}`
 `{"fname" : "Jhon","lname":"williams","class":"A","age" :30, "technologies":["Python","MongoDB"]}`
 
+<!-- db.getCollection('students').insertMany(
+    [
+        {"fname" : "Ahmad","lname":"Omar","class":"A","age" :25,"technologies":["PHP","mySql"]}, {"fname" : "Ammar","lname":"Saad","class":"B","age" :23,"technologies":["PHP","MongoDB"]}, {"fname" : "Steve","lname":"Rayan","class":"C","age" :18,"technologies":["C#","mySql"]}, {"fname" : "Jhon","lname":"williams","class":"A","age" :30, "technologies":["Python","MongoDB"]}
+    ]
+    ) -->
+
 3.  Write a MongoDB query to update the data of all students by incrementing their ages one year..
+
+<!-- db.getCollection('students').updateMany({}, {$inc : { 'age' : +1 }}) -->
+
+
 
 4. Write a MongoDB query to update all the student who has (ADAM) name and make thier classs `A` and thier technolgies `['PHP','mySql']`.
 
+<!-- db.getCollection('students').updateOne({'fname': 'Adam'}, {$set : {'technologies' : ['PHP','mySql']}}) -->
+
+<!-- db.getCollection('students').update({'fname': 'Eva'}, {$set : { 'technologies' : ['PHP','mySql'], 'class' : 'A' }}) -->
+
+
+
 5. Write a MongoDB query to delete one student from class `A` .
+
+<!-- db.getCollection('students').deleteOne({'class' : 'A'}) -->
+
+
 
 6.  Write a MongoDB query to delete All the students from class `C`.
 
+<!-- db.getCollection('students').deleteMany({'class' : 'C'}) -->
+
+
+
 7. Write a MongoDB query to display all the students that thier age less than 20.
+
+<!-- db.getCollection('students').find({'age' : {$lt : 20}}) -->
+
+
 
 8. Write a MongoDB query to display all the students that thier age greater than 30.
 
+<!-- db.getCollection('students').find({'age' : {$gt : 30}}) -->
+
+
+
+
 9. Write a MongoDB query to get only the students of class `B`.
 
-10.  Sort the faculty details by their age (descending order) and get the details of the first five faculty members only. .
+
+<!-- db.getCollection('students').find({'class': 'B'}) -->
+
+
+
+10.  Sort the faculty details by their age (descending order) and get the details of the first five faculty members only.
+
+<!-- db.getCollection('students').find().sort( { age: -1 } ).limit(5) -->
 
